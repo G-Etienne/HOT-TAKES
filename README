@@ -1,0 +1,120 @@
+**********************************************************************************************************
+DÉMARRER L'API :
+
+Dans le terminal, depuis le dossier backend, tapez : 
+
+--> npm run start
+
+
+**********************************************************************************************************
+SÉCURITÉ --> VALIDATION DES ENTRÉES
+
+----------------------------
+Email : 
+
+--> Les données entrées doivent correspondre aux formats standard des emails.
+
+----------------------------
+Password : 
+
+--> Un mot de passe fort est demandé, il doit au minimum contenir : 
+    - Une minuscule.
+    - Une majuscule.
+    - Une lettre.
+    - Un chiffre.
+    - 8 caractères.
+    - NE DOIT PAS CONTENIR LES CARACTÈRES SUIVANTS -->    = ' " < > ` 
+
+----------------------------
+Non de la sauce : 
+
+--> La validation autorise des lettres, des chiffres, des espaces et des signes - (les autres caractères ne sont pas autorisés).
+
+----------------------------
+Manufacturer : 
+
+--> La validation autorise des lettres, des espaces et des signes - (les autres caractères ne sont pas autorisés).
+
+----------------------------
+Image : 
+
+--> Les formats d'images autorisés sont les suivant: 
+    - jpeg
+    - jpg 
+    - png
+
+----------------------------
+Main pepper ingrédient :
+
+--> La validation autorise des lettres, des espaces et des signes - (les autres caractères ne sont pas autorisés).
+
+**********************************************************************************************************
+SÉCURITÉ --> NORMES RGPD : 
+
+Consentement : 
+      - Une demande d’accord à l’utilisateur pour collecter ses données personnelles doit être mise en place.
+        (politique de confidentialité).
+  
+Transparence : 
+      - CES INFORMATIONS DOIVENT ÊTRE FACILEMENT ACCÉSSIBLES DEPUIS L'APPLICATION.
+      - Les données collectées sont sous format texte, nombres ou de fichier image jpg, png.
+      - Les emails et mot de passe sont seulement utilisés pour l'authentification, la connexion et la création d'un compte.
+      - Les données sur les sauces sont accessibles à tous depuis l'application, mais ne sont pas manipuler.
+        Seul celui qui à ajouté la sauce est autorisé à modifier les données de celle-ci.
+      - Les données sont conservées dans la base de données temps que l'utilisateur qui les à créé ne les supprime pas.
+
+Droits des individus : 
+      - Les utilisateurs ont le droit d'accéder, de modifier, de limiter leurs données personnelles.
+      - Un espace pour que l'utilisateur puisse effectuer ces actions doit être mis en place.
+
+Sécurité des données : 
+      - Le mot de passe de l'utilisateur est chiffré en tant que hash.
+      - Une authentification est appliquée pour la manipulation de données.
+      - Le contrôle des entrées est appliqué pour sécuriser les inputs de l'application.
+      - L'application pourrait configurer le serveur en HTTPS pour plus de sécurité.
+
+Responsabilité : 
+    Vous devez : 
+      - Démontrer la conformité des normes du RGPD.
+      - Signaler les violations de données dans un délai de 72 heures.
+      - Si les données sont collectées à grande échelle, vous devez nommer un Délégué à la Protection des Données (DPD).
+
+**********************************************************************************************************
+SÉCURITÉ --> NORMES OWASP :
+
+Le Top Ten des attaques répertorier par l’OWASP et les mesure mise en place : 
+
+    1 – Injection → La validation d’entrées a été mise en place pour bloquer les attaques par injection.
+
+    2 – Piratage de session → L’API demande des mots de passe de type “fort” pour éviter le piratage de session.
+        Le mot de passe des utilisateurs est hashé (chiffrement).
+
+    3 – Exposition des données sensibles → Une configuration du serveur en HTTPS pourrait être mise en place.
+            - Pour cela → Obtenir un certificat SSL/TLS.
+
+    4 – Entités externes → Il n’y a pas d’entités externes en lien avec l’API.
+
+    5 – Contournement des contrôles d’accès → Une authentification forte a été mise en place pour éviter les
+        contournements des contrôles d'accès. 
+        Une durée de vie de 1h pour le token d'authentification est appliquée.
+
+    6 – Mauvaise configuration de sécurité → Une recherche sur les composants de l’API a été faite pour vérifier qu’il
+        n’y ait pas de correctif à appliquer.
+        Si des correctifs sont trouvés, ils sont appliqués.
+        Une recherche sur  de potentielles nouvelles vulnérabilités des composants de l’application doit régulièrement être faite.
+
+
+    7 – Cross-site scripting → Une validation des entrées a été mise en place pour contrer ces attaques.
+
+
+    8 – Désérialisation non sécurisée → Un audit de la sécurité sur l’application a été fait.
+        Une vérification du code à l’aide d'un outil d’analyse ou de test pourrait être mise en place.
+        Une vérification des logs d’exécution pourrait être mise en place.
+
+
+    9 – Utilisation de composants contenant des vulnérabilités connues → Les éléments de l’API sont à jour.
+        Une surveillance et la mise à jour régulière des éléments de l’application devra être mise en place.
+
+
+    10 – Manque de monitoring et surveillance → La création et la vérification régulière de logs ainsi qu’un reporting doit être mis
+         en place.
